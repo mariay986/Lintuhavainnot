@@ -14,3 +14,6 @@ Käyttäjä pystyy etsimään lintuja sivustolta nimellä.
 Käyttäjäsivu näyttää ainakin, montako eri havaintoa/lintulajia käyttäjä on lisännyt.
 Käyttäjä pystyy valitsemaan havainnolle yhden tai useamman luokittelun (esim. mikä lintulaji, kunta).
 Käyttäjä pystyy kommentoimaan muiden käyttäjien julkaisemia kuvia ja havaintoja.
+
+Sovellukseen on lisätty sisäänkirjautumis- ja uloskirjautumistoiminnot.
+Sovellukseen on lisätty toiminto, jolla lisätään lintuhavaintoja.
