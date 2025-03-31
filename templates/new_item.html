@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Uusi havainto</title>
+</head>
+
+<body>
+    <hl>Uusi havainto</hl>
+  <form action="/create_item" method="post">
+    <p>
+      Lintulaji: <br />
+      <input type="text" name="title" size="13" />
+    </p>
+    <p>Kuvaus: <br />
+    <textarea name="description" rows="8" cols="50"></textarea>
+    </p>
+    <p>
+        Kunta: <br />
+        <input type="text" name="city" size="10" />
+      </p>
+    <input type="submit" value="Luo havainto" />
+  </form>
+</body>
+
+</html>
