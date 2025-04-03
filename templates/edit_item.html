@@ -10,14 +10,14 @@
   <form action="/update_item" method="post">
     <p>
       Lintulaji: <br />
-      <input type="text" name="title" size="13" value="{{item.title}}" />
+      <input type="text" name="title" size="13" value="{{item.title}}" maxlength="40" required />
     </p>
     <p>Kuvaus: <br />
-    <textarea name="description" rows="8" cols="50">{{ item.description}}</textarea>
+    <textarea name="description" rows="8" cols="50" maxlength="1000">{{ item.description}}</textarea>
     </p>
     <p>
         Kunta: <br />
-        <input type="text" name="city" size="10" value="{{item.city}}" />
+        <input type="text" name="city" size="10" maxlength="25" value="{{item.city}}" required />
       </p>
     <input type="hidden" name="item_id" value="{{ item.id }}" />
     <input type="submit" value="Päivitä havaintoa" />
