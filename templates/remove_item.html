@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Havainnon poisto</title>
+</head>
+
+<body>
+    <hl>Havainnon poisto</hl>
+    <p>Havainto: {{ item.title }}</p>
+    <p>Haluatko varmasti poistaa tämän havainnon?</p>
+  <form action="/remove_item/{{ item.id }}" method="post">
+    <input type="submit" name="remove" value="Poista havainto">
+    <input type="submit" name="back" value="Takaisin">
+  </form>
+</body>
+
+</html>
