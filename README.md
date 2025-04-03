@@ -17,3 +17,4 @@ Käyttäjä pystyy kommentoimaan muiden käyttäjien julkaisemia kuvia ja havain
 
 Sovellukseen on lisätty sisäänkirjautumis- ja uloskirjautumistoiminnot.
 Sovellukseen on lisätty toiminto, jolla lisätään lintuhavaintoja.
+Sovellukseen on lisätty toiminnot, joilla voi muokata ja poistaa lintuhavaintoja.

@@ -29,10 +29,7 @@ def create_item():
     description = request.form["description"]
     city = request.form["city"]
     user_id = session["user_id"]
-
     items.add_item(title,description,city,user_id)
-
-
     return redirect("/")
 
 @app.route("/edit_item/<int:item_id>")
@@ -47,10 +44,7 @@ def update_item():
     description = request.form["description"]
     city = request.form["city"]
     user_id = session["user_id"]
-
     items.update_item(item_id, title, description, city)
-
-
     return redirect("/item/" + str(item_id))
 
 @app.route("/remove_item/<int:item_id>", methods=["GET","POST"])
