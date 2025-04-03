@@ -10,14 +10,14 @@
   <form action="/create_item" method="post">
     <p>
       Lintulaji: <br />
-      <input type="text" name="title" size="13" />
+      <input type="text" name="title" size="13" maxlength="40" required />
     </p>
     <p>Kuvaus: <br />
-    <textarea name="description" rows="8" cols="50"></textarea>
+    <textarea name="description" rows="8" cols="50" maxlength="1000"></textarea>
     </p>
     <p>
         Kunta: <br />
-        <input type="text" name="city" size="10" />
+        <input type="text" name="city" size="10" maxlength="25" required />
       </p>
     <input type="submit" value="Luo havainto" />
   </form>

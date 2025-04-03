@@ -44,8 +44,14 @@ def new_item():
 def create_item():
     require_login()
     title = request.form["title"]
+    if not title or len(title)>40:
+        abort(403)
     description = request.form["description"]
+    if len(description)>1000:
+        abort(403)
     city = request.form["city"]
+    if not city or len(city)>25:
+        abort(403)
     user_id = session["user_id"]
     items.add_item(title,description,city,user_id)
     return redirect("/")
