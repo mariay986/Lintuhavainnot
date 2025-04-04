@@ -42,13 +42,16 @@ def show_item(item_id):
     if not item:
         abort(404)
     classes = items.get_classes(item_id)
-    return render_template("show_item.html", item=item, classes = classes)
+    comments = items.get_comments(item_id)
+    return render_template("show_item.html", item=item, classes=classes, comments=comments)
     
 @app.route("/new_item")
 def new_item():
     require_login()
     classes = items.get_all_classes()
     return render_template("new_item.html", classes = classes)
+
+
 
 @app.route("/create_item", methods=["POST"])
 def create_item():
@@ -78,6 +81,22 @@ def create_item():
 
     items.add_item(title, description, city, user_id, classes)
     return redirect("/")
+
+@app.route("/create_comment", methods=["POST"])
+def create_comment():
+    require_login()
+    
+    comment = request.form["comment"]
+    if not comment or len(comment)>1000:
+        abort(403)
+    item_id = request.form["item_id"]
+    item = items.get_item(item_id)
+    if not item:
+        abort(403)
+    user_id = session["user_id"]
+
+    items.add_comment(item_id, user_id, comment)
+    return redirect("/item/" + str(item_id))
 
 @app.route("/edit_item/<int:item_id>")
 def edit_item(item_id):
