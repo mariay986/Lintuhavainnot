@@ -18,7 +18,18 @@
     <p>
         Kunta: <br />
         <input type="text" name="city" size="10" maxlength="25" required />
-      </p>
+    </p>
+    {% for class in classes %}
+    <p>
+        {{ class }}: <br />
+        <select name="classes">
+            <option value="">(valitse)</option>
+        {% for option in classes[class] %}
+            <option value="{{ class }}:{{ option }}">{{ option }}</option>
+        {% endfor %}
+        </select>
+    </p>
+    {% endfor %}
     <input type="submit" value="Luo havainto" />
   </form>
 </body>

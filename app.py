@@ -41,12 +41,14 @@ def show_item(item_id):
     item = items.get_item(item_id)
     if not item:
         abort(404)
-    return render_template("show_item.html", item=item)
+    classes = items.get_classes(item_id)
+    return render_template("show_item.html", item=item, classes = classes)
     
 @app.route("/new_item")
 def new_item():
     require_login()
-    return render_template("new_item.html")
+    classes = items.get_all_classes()
+    return render_template("new_item.html", classes = classes)
 
 @app.route("/create_item", methods=["POST"])
 def create_item():
@@ -61,7 +63,13 @@ def create_item():
     if not city or len(city)>25:
         abort(403)
     user_id = session["user_id"]
-    items.add_item(title,description,city,user_id)
+
+    classes = []
+    for entry in request.form.getlist("classes"):
+        if entry:
+            parts = entry.split(":")
+            classes.append((parts[0], parts[1]))
+    items.add_item(title, description, city, user_id, classes)
     return redirect("/")
 
 @app.route("/edit_item/<int:item_id>")
