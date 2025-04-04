@@ -4,6 +4,7 @@
 
 {% block content %}
 <body>
+    <h2>{{ item.title }}</h2>
     {% if session.user_id == item.user_id %}
     <p>
       <a href="/edit_item/{{ item.id }}">Muokkaa</a>  |
@@ -16,10 +17,10 @@
 
     {% endfor %}
     <p>
-    <hl>Kuvaus: {{item.description}}</hl>
+    <hl>Kuvaus: {{ item.description }}</hl>
     </p>
     <p>
-    <hl>Kunta: {{item.city}}</hl>
+    <hl>Kunta: {{ item.city }}</hl>
     </p>
     <p>
     <hl>Havainnon lisäsi: <a href="/user/{{ item.user_id }}">{{ item.username }}<a/></hl>
@@ -30,13 +31,13 @@
       <li>{{ class.title}}: {{ class.value }}</li>
       {% endfor %}
     {% endif %}
-    <h2>Kommentit</h2>
+    <h3>Kommentit</h3>
     <ul>
       {% for comm in comments %}
       <li>{{ comm.comment }} käyttäjä:<a href="/user/{{ comm.user_id }}">{{ comm.username }}</a></li>
       {% endfor %}
     </ul>
-    <h3>Uusi kommentti</h3>
+    <hl>Uusi kommentti</hl>
     <form action="/create_comment" method="post">
     <textarea name="comment" rows="5" cols="30" maxlength="1000" required></textarea>
     <input type="hidden" name="item_id" value="{{ item.id }}" />
