@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html>
+{% extends "layout.html" %}
 
-<head>
-  <title>Havainnon muokkaus</title>
-</head>
+{% block title %}Lintuhavainnot{% endblock %}
 
+{% block content %}
 <body>
-    <hl>Havainnon muokkaus</hl>
+    <h3>Havainnon muokkaus</h3>
   <form action="/update_item" method="post">
     <p>
       Lintulaji: <br />
@@ -38,5 +36,4 @@
     <input type="submit" value="Päivitä havaintoa" />
   </form>
 </body>
-
-</html>
+{% endblock %}

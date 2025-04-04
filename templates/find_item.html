@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html>
+{% extends "layout.html" %}
 
-<head>
-  <title>Etsi havaintoja</title>
-</head>
+{% block title %}Lintuhavainnot{% endblock %}
 
+{% block content %}
 <body>
-  <h1>Etsi havaintoja</h1>
+  <h2>Etsi havaintoja</h2>
   <form action="/find_item" method="get">
     <p>
        Hakusana: <input type="text" name="query" value="{{ query }}">
@@ -14,12 +12,8 @@
     <input type="submit" value="Lähetä">
   </form>
 
-  <p>
-    <a href="/">Takaisin</a>
-  </p>
-
   {% if query %}
-  <h2>Tulokset</h2>
+  <h3>Tulokset</h3>
 
   <ul>
     {% for item in results %}
@@ -28,5 +22,4 @@
   </ul>
   {% endif %}
 </body>
-
-</html>
+{% endblock %}

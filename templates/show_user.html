@@ -1,6 +1,8 @@
-<!DOCTYPE html>
-<html>
+{% extends "layout.html" %}
 
+{% block title %}Käyttäjä {{ user.username }}{% endblock %}
+
+{% block content %}
 <head>
   <h2>Käyttäjä {{ user.username }}</h2>
 </head>
@@ -9,15 +11,11 @@
     <p>
      Käyttäjällä on yhteensä {{ items | count}} havaintoa. 
     </p>
-    <h2>Havainnot</h2>
+    <h3>Havainnot</h3>
     <ul>
      {% for item in items %}
      <li><a href="/item/{{ item.id }}">{{ item.title }}</a></li>
      {% endfor %}
     </ul>
-    <p>
-    <a href="/">Takaisin</a>
-    </p>
 </body>
-
-</html>
+{% endblock %}

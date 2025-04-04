@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html>
+{% extends "layout.html" %}
 
-<head>
-  <title>Rekisteröinti</title>
-</head>
+{% block title %}Lintuhavainnot{% endblock %}
 
+{% block content %}
 <body>
   <form action="/create" method="post">
     <p>
@@ -22,5 +20,4 @@
     <input type="submit" value="Luo tunnus" />
   </form>
 </body>
-
-</html>
+{% endblock %}

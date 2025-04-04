@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html>
+{% extends "layout.html" %}
 
-<head>
-  <h2>Havainnon kuvat</h2>
-</head>
+{% block title %}Lintuhavainnot{% endblock %}
 
+{% block content %}
 <body>
+    <h2>Poista kuvia</h2>
     <p>
     Havainnossa on {{ images | count }} kuvaa.
     </p>
@@ -33,5 +32,4 @@
     <p><a href="/item/{{ item.id }}">Takaisin</a>
     </p>
 </body>
-
-</html>
+{% endblock %}

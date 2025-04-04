@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html>
+{% extends "layout.html" %}
 
-<head>
-  <title>Havainnon poisto</title>
-</head>
+{% block title %}Lintuhavainnot{% endblock %}
 
+{% block content %}
 <body>
-    <hl>Havainnon poisto</hl>
+    <h3>Havainnon poisto</h3>
     <p>Havainto: {{ item.title }}</p>
     <p>Haluatko varmasti poistaa tämän havainnon?</p>
   <form action="/remove_item/{{ item.id }}" method="post">
@@ -14,5 +12,4 @@
     <input type="submit" name="back" value="Takaisin">
   </form>
 </body>
-
-</html>
+{% endblock %}
