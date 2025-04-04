@@ -46,8 +46,10 @@ def update_item(item_id, title, description, city, classes):
                               city = ?
                           WHERE id = ?"""
     db.execute(sql, [title, description, city, item_id])
+
     sql = "DELETE FROM item_classes WHERE item_id = ?"
     db.execute(sql, [item_id])
+
     sql = "INSERT INTO item_classes (item_id, title, value) VALUES (?, ?, ?)"
     for class_title, class_value in classes:
         db.execute(sql, [item_id, class_title, class_value])

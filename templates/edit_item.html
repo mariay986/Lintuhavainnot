@@ -20,6 +20,21 @@
         <input type="text" name="city" size="10" maxlength="25" value="{{item.city}}" required />
       </p>
     <input type="hidden" name="item_id" value="{{ item.id }}" />
+    {% for class in all_classes %}
+    <p>
+        {{ class }}: <br />
+        <select name="classes">
+            <option value="">(valitse)</option>
+        {% for option in all_classes[class] %}
+            {% if classes[class] == option %}
+            <option value="{{ class }}:{{ option }}" selected>{{ option }}</option>
+            {% else %}
+            <option value="{{ class }}:{{ option }}">{{ option }}</option>
+            {% endif %}
+        {% endfor %}
+        </select>
+    </p>
+    {% endfor %}
     <input type="submit" value="Päivitä havaintoa" />
   </form>
 </body>

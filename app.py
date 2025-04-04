@@ -80,27 +80,40 @@ def edit_item(item_id):
         abort(404)
     if item["user_id"] != session["user_id"]:
         abort(403)
-    return render_template("edit_item.html", item=item)
+
+    all_classes = items.get_all_classes()
+    classes = {}
+    for my_class in all_classes:
+        classes[my_class] = ""
+    for entry in items.get_classes(item_id):
+        classes[entry["title"]] = entry["value"]
+    items.get_classes(item_id)
+
+    return render_template("edit_item.html", item=item, classes=classes, all_classes = all_classes)
 
 @app.route("/update_item", methods=["POST"])
 def update_item():
     require_login()
+
     item_id = request.form["item_id"]
     item = items.get_item(item_id)
     if not item:
         abort(404)
     if item["user_id"] != session["user_id"]:
         abort(403)
+
     title = request.form["title"]
-    if not title or len(title)>40:
+    if not title or len(title) > 40:
         abort(403)
     description = request.form["description"]
-    if len(description)>1000:
+    if len(description) > 1000:
         abort(403)
     city = request.form["city"]
     if not city or len(city)>25:
         abort(403)
-    all_classes = items.get_all_classes
+
+    all_classes = items.get_all_classes()
+
     classes = []
     for entry in request.form.getlist("classes"):
         if entry:
@@ -110,7 +123,9 @@ def update_item():
             if class_value not in all_classes[class_title]:
                 abort(403)
             classes.append((class_title, class_value))
+
     items.update_item(item_id, title, description, city, classes)
+
     return redirect("/item/" + str(item_id))
 
 @app.route("/remove_item/<int:item_id>", methods=["GET","POST"])
