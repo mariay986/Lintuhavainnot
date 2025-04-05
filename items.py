@@ -22,12 +22,12 @@ def add_item(title, description, city, user_id, classes):
         db.execute(sql, [item_id, class_title, class_value])
 
 def add_comment(item_id, user_id, comment):
-    sql = """INSERT INTO comments (item_id, user_id, comment)
-             VALUES (?, ?, ?)"""
+    sql = """INSERT INTO comments (item_id, user_id, sent_at, comment)
+             VALUES (?, ?, datetime('now'), ?)"""
     db.execute(sql, [item_id, user_id, comment])
 
 def get_comments(item_id):
-    sql = """SELECT comments.comment, users.id user_id, users.username
+    sql = """SELECT comments.comment, comments.sent_at, users.id user_id, users.username
              FROM comments, users
              WHERE comments.item_id = ? AND comments.user_id = users.id
              ORDER BY comments.id DESC"""

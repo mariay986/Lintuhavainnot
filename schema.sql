@@ -16,6 +16,7 @@ CREATE TABLE comments (
     id INTEGER PRIMARY KEY,
     item_id INTEGER REFERENCES items,
     user_id INTEGER REFERENCES users,
+    sent_at TEXT,
     comment TEXT
 );
 

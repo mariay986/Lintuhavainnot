@@ -34,7 +34,10 @@
     <h3>Kommentit</h3>
     <ul>
       {% for comm in comments %}
-      <li>{{ comm.comment }} käyttäjä:<a href="/user/{{ comm.user_id }}">{{ comm.username }}</a></li>
+      <p>
+        käyttäjä <a href="/user/{{ comm.user_id }}">{{ comm.username }}</a> ({{ comm.sent_at }}):
+      </p>
+      |  {{ comm.comment }}  |
       {% endfor %}
     </ul>
     <hl>Uusi kommentti</hl>
