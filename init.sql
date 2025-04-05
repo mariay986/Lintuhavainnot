@@ -313,3 +313,7 @@ INSERT INTO classes (title,value) VALUES ('-Kunta-','Ylöjärvi');
 INSERT INTO classes (title,value) VALUES ('-Kunta-','Ypäjä');
 INSERT INTO classes (title,value) VALUES ('-Kunta-','Ähtäri');
 INSERT INTO classes (title,value) VALUES ('-Kunta-','Äänekoski');
+
+INSERT INTO classes (title,value) VALUES ('harvinaisuus','yleinen');
+INSERT INTO classes (title,value) VALUES ('harvinaisuus','harvalukuinen');
+INSERT INTO classes (title,value) VALUES ('harvinaisuus','harvinainen');

@@ -72,7 +72,6 @@ def get_item(item_id):
     return result[0] if result else None
 
 def update_item(item_id, title, description, city, classes):
-    print("päästiin")
     sql = """UPDATE items SET title = ?,
                               description = ?,
                               city = ?
