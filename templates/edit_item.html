@@ -13,12 +13,11 @@
     <p>Kuvaus: <br />
     <textarea name="description" rows="8" cols="50" maxlength="1000">{{ item.description}}</textarea>
     </p>
-    <p>
-        Kunta: <br />
-        <input type="text" name="city" size="10" maxlength="25" value="{{item.city}}" required />
-      </p>
+    
     <input type="hidden" name="item_id" value="{{ item.id }}" />
+    <input type="hidden" name="city" value="{{ item.city }}" />
     {% for class in all_classes %}
+    {% if class != '-Kunta-' %}
     <p>
         {{ class }}: <br />
         <select name="classes">
@@ -32,7 +31,9 @@
         {% endfor %}
         </select>
     </p>
+    {% endif %}
     {% endfor %}
+
     <input type="submit" value="Päivitä havaintoa" />
   </form>
 </body>

@@ -72,12 +72,14 @@ def get_item(item_id):
     return result[0] if result else None
 
 def update_item(item_id, title, description, city, classes):
+    print("päästiin")
     sql = """UPDATE items SET title = ?,
                               description = ?,
                               city = ?
                           WHERE id = ?"""
     db.execute(sql, [title, description, city, item_id])
-
+    print("5")
+    
     sql = "DELETE FROM item_classes WHERE item_id = ?"
     db.execute(sql, [item_id])
 
@@ -88,8 +90,13 @@ def update_item(item_id, title, description, city, classes):
 def remove_item(item_id):
     sql = "DELETE FROM item_classes WHERE item_id = ?"
     db.execute(sql, [item_id])
+    sql = "DELETE FROM images WHERE item_id = ?"
+    db.execute(sql, [item_id])
+    sql = "DELETE FROM comments WHERE item_id = ?"
+    db.execute(sql, [item_id])
     sql = "DELETE FROM items WHERE id = ?"
     db.execute(sql, [item_id])
+
     
 
 def find_items(query):

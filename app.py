@@ -122,7 +122,7 @@ def create_item():
     if len(description)>1000:
         abort(403)
     city = request.form["city"]
-    if not city or len(city)>25:
+    if not city:
         abort(403)
     user_id = session["user_id"]
 
@@ -161,17 +161,21 @@ def create_comment():
 def edit_item(item_id):
     require_login()
     item = items.get_item(item_id)
+
     if not item:
         abort(404)
     if item["user_id"] != session["user_id"]:
         abort(403)
 
     all_classes = items.get_all_classes()
+
     classes = {}
+
     for my_class in all_classes:
         classes[my_class] = ""
     for entry in items.get_classes(item_id):
         classes[entry["title"]] = entry["value"]
+
     items.get_classes(item_id)
 
     return render_template("edit_item.html", item=item, classes=classes, all_classes = all_classes)
@@ -193,9 +197,10 @@ def update_item():
     description = request.form["description"]
     if len(description) > 1000:
         abort(403)
+
     city = request.form["city"]
-    if not city or len(city)>25:
-        abort(403)
+    if not city:
+            abort(403)
 
     all_classes = items.get_all_classes()
 
