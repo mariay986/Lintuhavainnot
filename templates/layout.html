@@ -6,16 +6,20 @@
   <link rel="stylesheet" href="/static/main.css">
 </head>
 
-<body>
+<div class="container">
+    <div class="img">
+        <img src="/static/images/punarinta.png" alt="kuvake"/>
+    </div>
   <h1>LINTUHAVAINNOT</h1>
+
+
 
   {% if session.user_id %}
   <p>
     Olet kirjautunut nimellä {{ session.username }}
   </p>
   {% endif %}
-  
-  
+
   <p>
     <a href="/">Etusivu</a>  |
     <a href="/find_item">Etsi havaintoja</a>  |
@@ -25,9 +29,10 @@
     {% else %}
     <a href="/login">Kirjaudu sisään</a>  |
     <a href="/register">Luo tunnus</a>
-    {% endif %}  
+    {% endif %}
     </p>
-
+</div>
+<body>
     {% block content %}{% endblock %}
 </body>
 

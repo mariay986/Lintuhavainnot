@@ -7,8 +7,8 @@
 
 {% for item in items %}
 <div class="item">
-<a href="/item/{{ item.id }}">{{ item.title }}</a>, {{ item.city }}
+  <a href="/item/{{ item.id }}">{{ item.title }}</a>, {{ item.city }} <br/>
+  käyttäjältä <a href="/user/{{ item.user_id }}">{{ item.username }}</a>
 </div>
 {% endfor %}
-
 {% endblock %}
