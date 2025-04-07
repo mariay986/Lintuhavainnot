@@ -3,43 +3,42 @@
 {% block title %}Lintuhavainnot{% endblock %}
 
 {% block content %}
-<body>
-    <h3>Uusi havainto</h3>
-  <form action="/create_item" method="post">
-    <p>
-      Lintulaji: <br />
-      <input type="text" name="title" size="13" maxlength="40" required />
-    </p>
-    <p>Kuvaus: <br />
+<h3>Uusi havainto</h3>
+
+<form action="/create_item" method="post">
+  <p>
+    Lintulaji: <br />
+    <input type="text" name="title" size="13" maxlength="40" required />
+  </p>
+  <p>Kuvaus: <br />
     <textarea name="description" rows="8" cols="50" maxlength="1000"></textarea>
-    </p>
+  </p>
     
-    {% for class in classes %}
-    {% if class == "-Kunta-" %}
-    {{ 'kunta' }}: <br />
-    <select name="city">
-      <option value="">(valitse)</option>
-        {% for option in classes[class] %}
-            <option value="{{ option }}">{{ option }}</option>
-        {% endfor %}
-    </select>
+  {% for class in classes %}
+  {% if class == "-Kunta-" %}
+  {{ 'kunta' }}: <br />
+  <select name="city">
+    <option value="">(valitse)</option>
+      {% for option in classes[class] %}
+        <option value="{{ option }}">{{ option }}</option>
+      {% endfor %}
+  </select>
     
-    {% elif class != "-Kunta-" %}
-    <p>
-        {{ class }}: <br />
-        <select name="classes">
-            <option value="">(valitse)</option>
-        {% for option in classes[class] %}
-            <option value="{{ class }}:{{ option }}">{{ option }}</option>
-        {% endfor %}
-        </select>
-    </p>
-    {% endif %}
+  {% elif class != "-Kunta-" %}
+  <p>
+    {{ class }}: <br />
+    <select name="classes">
+    <option value="">(valitse)</option>
+    {% for option in classes[class] %}
+    <option value="{{ class }}:{{ option }}">{{ option }}</option>
     {% endfor %}
-    <p>
-      <input type="submit" value="Luo havainto" />
-    </p>
+    </select>
+  </p>
+  {% endif %}
+  {% endfor %}
+  <p>
+    <input type="submit" value="Luo havainto" />
+  </p>
     
-  </form>
-</body>
+</form>
 {% endblock %}

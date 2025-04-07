@@ -1,7 +1,6 @@
-from flask import Flask
 import sqlite3
+from flask import Flask
 from flask import abort, make_response, redirect, render_template, request, session
-import db
 import config
 import items
 import users
@@ -44,7 +43,8 @@ def show_item(item_id):
     classes = items.get_classes(item_id)
     comments = items.get_comments(item_id)
     images = items.get_images(item_id)
-    return render_template("show_item.html", item=item, classes=classes, comments=comments, images=images)
+    return render_template("show_item.html", item=item, classes=classes,
+                           comments=comments, images=images)
 
 @app.route("/image/<int:image_id>")
 def show_image(image_id):
@@ -63,10 +63,9 @@ def edit_images(item_id):
         abort(404)
     if item["user_id"] != session["user_id"]:
         abort(403)
-    
 
     images = items.get_images(item_id)
-    
+
     return render_template("images.html", item=item, images=images)
 
 @app.route("/add_image", methods=["POST"])
@@ -87,7 +86,7 @@ def add_image():
         return "VIRHE: liian suuri kuva"
 
     items.add_image(item_id, image)
-    
+
     return redirect("/images/" + str(item_id))
 
 @app.route("/remove_images", methods=["POST"])
@@ -100,12 +99,12 @@ def remove_images():
         abort(404)
     if item["user_id"] != session["user_id"]:
         abort(403)
-    
+
     for image_id in request.form.getlist("image_id"):
         items.remove_image(item_id, image_id)
 
     return redirect("/images/" + str(item_id))
-    
+
 @app.route("/new_item")
 def new_item():
     require_login()
@@ -144,7 +143,7 @@ def create_item():
 @app.route("/create_comment", methods=["POST"])
 def create_comment():
     require_login()
-    
+
     comment = request.form["comment"]
     if not comment or len(comment)>1000:
         abort(403)
@@ -200,7 +199,7 @@ def update_item():
 
     city = request.form["city"]
     if not city:
-            abort(403)
+        abort(403)
 
     all_classes = items.get_all_classes()
 
@@ -234,13 +233,11 @@ def remove_item(item_id):
         if "remove" in request.form:
             items.remove_item(item_id)
             return redirect("/")
-        else:
-            return redirect("/item/" + str(item_id))
+        return redirect("/item/" + str(item_id))
 
 @app.route("/register")
 def register():
     return render_template("register.html")
-
 
 @app.route("/create", methods=["POST"])
 def create():
@@ -253,14 +250,13 @@ def create():
         users.create_user(username, password1)
     except sqlite3.IntegrityError:
         return "VIRHE: tunnus on jo varattu"
-
     return "Tunnus luotu"
 
 @app.route("/login", methods=["GET","POST"])
 def login():
     if request.method == "GET":
         return render_template("login.html")
-    
+
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
@@ -269,8 +265,7 @@ def login():
             session["user_id"] = user_id
             session["username"] = username
             return redirect("/")
-        else:
-            return "VIRHE: väärä tunnus tai salasana"
+        return "VIRHE: väärä tunnus tai salasana"
 
 @app.route("/logout", methods=["GET"])
 def logout():

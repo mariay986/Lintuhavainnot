@@ -3,13 +3,11 @@
 {% block title %}Lintuhavainnot{% endblock %}
 
 {% block content %}
-<body>
-    <h3>Havainnon poisto</h3>
-    <p>Havainto: {{ item.title }}</p>
-    <p>Haluatko varmasti poistaa tämän havainnon?</p>
-  <form action="/remove_item/{{ item.id }}" method="post">
-    <input type="submit" name="remove" value="Poista havainto">
-    <input type="submit" name="back" value="Takaisin">
-  </form>
-</body>
+<h3>Havainnon poisto</h3>
+<p>Havainto: {{ item.title }}</p>
+<p>Haluatko varmasti poistaa tämän havainnon?</p>
+<form action="/remove_item/{{ item.id }}" method="post">
+  <input type="submit" name="remove" value="Poista havainto">
+  <input type="submit" name="back" value="Takaisin">
+</form>
 {% endblock %}

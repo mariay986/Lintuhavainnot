@@ -7,12 +7,10 @@
 </head>
 
 <div class="container">
-    <div class="img">
-        <img src="/static/images/punarinta.png" alt="kuvake"/>
-    </div>
+  <div class="img">
+    <img src="/static/images/punarinta.png" alt="kuvake"/>
+  </div>
   <h1>LINTUHAVAINNOT</h1>
-
-
 
   {% if session.user_id %}
   <p>
@@ -30,10 +28,10 @@
     <a href="/login">Kirjaudu sisään</a>  |
     <a href="/register">Luo tunnus</a>
     {% endif %}
-    </p>
+  </p>
 </div>
 <body>
-    {% block content %}{% endblock %}
+  {% block content %}{% endblock %}
 </body>
 
 </html>

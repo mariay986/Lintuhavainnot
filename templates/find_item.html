@@ -3,23 +3,23 @@
 {% block title %}Lintuhavainnot{% endblock %}
 
 {% block content %}
-<body>
-  <h2>Etsi havaintoja</h2>
-  <form action="/find_item" method="get">
-    <p>
-       Hakusana: <input type="text" name="query" value="{{ query }}">
-    </p>
-    <input type="submit" value="Lähetä">
-  </form>
 
-  {% if query %}
-  <h3>Tulokset</h3>
+<h2>Etsi havaintoja</h2>
+<form action="/find_item" method="get">
+  <p>
+    Hakusana: <input type="text" name="query" value="{{ query }}">
+  </p>
+  <input type="submit" value="Lähetä">
+</form>
 
-  <ul>
-    {% for item in results %}
-    <li><a href="/item/{{ item.id }}">{{ item.title }}</a></li>
-    {% endfor %}
-  </ul>
-  {% endif %}
-</body>
+{% if query %}
+<h3>Tulokset</h3>
+
+<ul>
+  {% for item in results %}
+  <li><a href="/item/{{ item.id }}">{{ item.title }}</a></li>
+  {% endfor %}
+</ul>
+{% endif %}
+
 {% endblock %}

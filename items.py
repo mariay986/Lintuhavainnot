@@ -5,13 +5,13 @@ def get_all_classes():
     result = db.query(sql)
     classes = {}
     for title, value in result:
-        classes[title] = [] 
+        classes[title] = []
     for title, value in result:
         classes[title].append(value)
     return classes
 
 def add_item(title, description, city, user_id, classes):
-    sql = """INSERT INTO items(title, description, city, user_id) 
+    sql = """INSERT INTO items(title, description, city, user_id)
             VALUES (?, ?, ?, ?)"""
     db.execute(sql, [title, description, city, user_id])
 
@@ -86,7 +86,7 @@ def update_item(item_id, title, description, city, classes):
                           WHERE id = ?"""
     db.execute(sql, [title, description, city, item_id])
     print("5")
-    
+
     sql = "DELETE FROM item_classes WHERE item_id = ?"
     db.execute(sql, [item_id])
 
@@ -104,10 +104,8 @@ def remove_item(item_id):
     sql = "DELETE FROM items WHERE id = ?"
     db.execute(sql, [item_id])
 
-    
-
 def find_items(query):
-    sql = """SELECT id, title 
+    sql = """SELECT id, title
              FROM items
              WHERE title LIKE ? OR description LIKE ?
              ORDER BY id DESC"""

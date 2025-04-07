@@ -3,19 +3,15 @@
 {% block title %}Käyttäjä {{ user.username }}{% endblock %}
 
 {% block content %}
-<head>
-  <h2>Käyttäjä {{ user.username }}</h2>
-</head>
+<h2>Käyttäjä {{ user.username }}</h2>
 
-<body>
-    <p>
-     Käyttäjällä on yhteensä {{ items | count}} havaintoa. 
-    </p>
-    <h3>Havainnot</h3>
-    <ul>
-     {% for item in items %}
-     <li><a href="/item/{{ item.id }}">{{ item.title }}</a></li>
-     {% endfor %}
-    </ul>
-</body>
+<p>
+  Käyttäjällä on yhteensä {{ items | count}} havaintoa.
+</p>
+<h3>Havainnot</h3>
+<ul>
+  {% for item in items %}
+  <li><a href="/item/{{ item.id }}">{{ item.title }}</a></li>
+  {% endfor %}
+</ul>
 {% endblock %}
