@@ -32,7 +32,7 @@ Luotu käyttäjäsivut.
 
 Lisätty kommentointitoiminto.
 
-Päivitetty etusivun ulkoasua. Yhtenäistetty sivujen ulkoasua.
+Päivitetty etusivun ulkoasua. Yhtenäistetty sivujen ulkoasua. Korjattu csrf-aukko.
 ________________________________________________________________________________
 
 Kehitteillä olevia lisäominaisuuksia, joista ainakin osa toteutetaan:
