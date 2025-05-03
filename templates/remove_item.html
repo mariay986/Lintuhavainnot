@@ -7,6 +7,7 @@
 <p>Havainto: {{ item.title }}</p>
 <p>Haluatko varmasti poistaa tämän havainnon?</p>
 <form action="/remove_item/{{ item.id }}" method="post">
+  <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
   <input type="submit" name="remove" value="Poista havainto">
   <input type="submit" name="back" value="Takaisin">
 </form>

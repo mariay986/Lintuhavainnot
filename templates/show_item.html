@@ -39,13 +39,15 @@
   | {{ comm.comment }} |
   {% endfor %}
 </ul>
-
+{% if session.user_id %}
 <hl>Uusi kommentti</hl>
 <form action="/create_comment" method="post">
   <textarea name="comment" rows="5" cols="30" maxlength="1000" required></textarea>
   <input type="hidden" name="item_id" value="{{ item.id }}" />
+  <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
   <p>
     <input type="submit" value="Kommentoi" />
   </p>
 </form>
+{% endif %}
 {% endblock %}
